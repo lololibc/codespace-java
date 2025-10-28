@@ -4,122 +4,88 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner leitor = new Scanner(System.in);
 
-        // Operadores lógicos: &&, || e !
-        // Operadores relacionais: >, <, >=, <=, ==, !=
-        // Operador de atribuição: =, ++, +=, --, -=
-        // Operadores aritméticos: +, -, /, *, % (mod)
 
-        int opcao;
-        double altura;
-        double largura;
-        double cateto1;
-        double cateto2;
-        double hipotenusa;
-        double area;
-        double raio;
+        System.out.print("Selecione o exercício (1, 2, 3 ou 4): ");
+        int opcao = leitor.nextInt();
 
-        double num1;
-        double num2;
-        double num3;
-        double media;
-
-        System.out.print(
-                "Escolha uma das opções a seguir: \n (1) Calcular a àrea de um retângulo\n (2) Calcular a área de um triângulo\n (3) Calcular a hipotenusa de um triângulo retângulo\n (4) Calcular a área de um círculo\n (5) Calcular o perímetro de um Círculo\n (6) Calcular a média de 3 notas\n Opcão escolhida: ");
-        opcao = leitor.nextInt();
         switch (opcao) {
             case 1:
-                System.out.println("Vamos calcular a área de um retângulo!");
+                // Dado um vetor com 10 números reais, faça um algoritmo que percorra o vetor e
+                // imprima o seu maior elemento.
 
-                System.out.print("Entre com a altura do retângulo: ");
-                altura = leitor.nextDouble();
-                if (altura <= 0) {
-                    System.out.println("Opção inválida!");
-                } else {
-                    System.out.print("Entre com a largura do retângulo: ");
-                    largura = leitor.nextDouble();
-                    if (largura <= 0) {
-                        System.out.println("Opção inválida!");
-                    } else {
-                        area = altura * largura;
-                        System.out.println("A área do retângulo é: " + area);
+                double n2[] = { 3.7, 4.8, 5.3, 9.9, 4.3, 5.6, 1.3, 4.5, 10, 7 };
+
+                double maior = n2[0];
+                for (int i = 1; i < n2.length; i++) {
+                    if (n2[i] > maior) {
+                        maior = n2[i];
                     }
                 }
-                break;
+                System.out.println("A maior nota é: " + maior); 
+
+            break;
             case 2:
-                System.out.println("Vamos calcular a área de um triângulo!");
+                // Utilizando vetor, imprimir os n primeiros termos da série de Fibonacci: 1 1 2
+                // 3 5 8 ... n
 
-                System.out.print("Entre com a altura do triângulo: ");
-                altura = leitor.nextDouble();
-                if (altura <= 0) {
-                    System.out.println("Opção inválida!");
-                } else {
-                    System.out.print("Entre com a largura do triângulo: ");
-                    largura = leitor.nextDouble();
-                    if (largura <= 0) {
-                        System.out.println("Opção inválida!");
-                    } else {
-                        area = (altura * largura) / 2;
-                        System.out.println("A área do triângulo é: " + area);
-                    }
+                int n = leitor.nextInt();
+                int[] fibo = new int[n];
+
+                fibo[0] = 1;
+                fibo[1] = 1;
+                System.out.println(fibo[0]);
+                System.out.println(fibo[1]);
+
+                for (int i = 2; i < n; i++) {
+                    fibo[i] = fibo[i - 1] + fibo[i - 2];
+                    System.out.println(fibo[i]);
                 }
+            break;
             case 3:
-                System.out.println("Vamos calcular a hipotenusa de um triângulo retângulo!");
+                 //Defina dois vetores com 5 elementos cada. Faça um algoritmo que
+                 //calcule e imprima a soma deles. Ou seja, a soma de cada elemento de um vetor
+                 //pelo elemento correspondente do outro vetor.
+                 
+                double A[] = { 1, 2, 3, 4, 5 };
+                double B[] = { 6, 7, 8, 9, 10 };
+                System.out.print("Digite o índice do elemento que deseja somar (0 a 4): ");
+                int num = leitor.nextInt();
 
-                System.out.print("Entre com um cateto do triângulo: ");
-                cateto1 = leitor.nextDouble();
-                if (cateto1 <= 0) {
-                    System.out.println("Opção inválida!");
-                } else {
-                    System.out.print("Entre com o outro cateto do triângulo: ");
-                    cateto2 = leitor.nextDouble();
-                    if (cateto2 <= 0) {
-                        System.out.println("Opção inválida!");
-                    } else {
-                        hipotenusa = Math.sqrt((cateto1 * cateto1) + (cateto2 * cateto2));
-                        System.out.println("A hipotenusa do triângulo é: " + hipotenusa);
-                    }
-                }
+                double soma = A[num] + B[num];
+                System.out.println(soma);
                 break;
             case 4:
-                System.out.println("Vamos calcular a área de um círculo!");
-
-                System.out.print("Entre com o raio do círculo: ");
-                raio = leitor.nextDouble();
-                if( raio <= 0) {
-                    System.out.println("Opção inválida!");
-                } else {
-                    area = Math.PI * Math.PI * raio;
-                    System.out.println("A área do círculo é: " + area);
+                // Leia a nota de 38 alunos de uma turma e calcule a média das notas, a maior e a menor nota.
+                double notas[] = new double[38];
+                double somaNotas = 0;
+                double notaMaior = 0;
+                double notaMenor = 0;
+                for (int i = 0; i < notas.length; i++) {
+                    System.out.print("Digite a nota do aluno " + (i + 1) + ": ");
+                    notas[i] = leitor.nextDouble();
+                    somaNotas = somaNotas + notas[i];
+                    if (i == 0) {
+                        notaMaior = notas[i];
+                        notaMenor = notas[i];
+                    } else {
+                        if (notas[i] > notaMaior) {
+                            notaMaior = notas[i];
+                        }
+                        if (notas[i] < notaMenor) {
+                            notaMenor = notas[i];
+                        }
+                    }
                 }
-                break;
-            case 5:
-                System.out.println("Vamos calcular o perímetro de um círculo!");
-
-                System.out.print("Entre com o raio do círculo: ");
-                raio = leitor.nextDouble();
-                if( raio <= 0) {
-                    System.out.println("Opção inválida!");
-                } else {
-                    area = 2 * Math.PI * raio;
-                    System.out.println("O perímetro do círculo é: " + area);
-                }
-                break;
-            case 6:
-                System.out.println("Vamos calcular a média de 3 notas!");
-                System.out.print("Entre com a primeira nota: ");
-                num1 = leitor.nextDouble();
-                System.out.print("Entre com a segunda nota: ");
-                num2 = leitor.nextDouble();
-                System.out.print("Entre com a terceira nota: ");
-                num3 = leitor.nextDouble();
-                media = (num1 + num2 + num3) / 3;
-                System.out.println(" A média é igual a: " + media);
-                break;
+                somaNotas = somaNotas / notas.length;
+                System.out.println("Média das notas: " + somaNotas);
+                System.out.println("Maior nota: " + notaMaior);
+                System.out.println("Menor nota: " + notaMenor);
+            break;
             default:
-                System.out.println("Opção inválida!");
-
+                System.out.println("Opção inválida");
+            break;
         }
 
         leitor.close();
     }
-}codigo
+}
